@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+      <meta charset="utf-8">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="css\styles.css">
+      <title>Comandos Git</title>
+</head>
+
+<body>
+
+      <h1>Localmente</h1>
+
+
+      <h2>Clonar repositorios</h2>
+
+      <p>git clone (url) ///// Clonamos el repositorio de la url y lo tendremos localmente en nuestra computadora</p>
+
+      <h2>Comandos comunes</h2>
+      <ul>
+            <li>git init . ///// Inicializa Git en la carpeta actual</li>
+            <li>git add (nombreArchivo) ///// Agrega archivos al "stagging area" ( Un area de seleccion de archivos antes de meterlos a la carpeta local git )</li>
+
+            <p class="nota">Nota: El staggin area es una area de seleccion de archivos, se pueden poner y quitar antes de agregarlas a la carpeta local git</p>
+
+            <li>git commit -m (mensaje) ///// Para agregar los archivos del stagging area a la carpeta local git</li>
+            <li>git commit --amend ///// Modificar el nombre de un commit</li>
+            <li>git status ///// muestra si existen archivos modificados a los cuales no se les ha aplicado commit</li>
+
+            <li>git diff ///// muestra cambios entre la carpeta actual( working tree ) y la carpeta local git, ademas de cambios entre commits</li>
+
+            <li>git checkout (NombreDelArchivo) ///// Regresar el archivo al estado de la ultima version guardada</li>
+
+            <li>git rm ( nombreDelArchivo ) ///// Para borrar un archivo de git -- Hay que hacer commit y push</li>
+            <li>git rm --cached -r (NombreDelArchivo) ///// remover determinado archivo del stagging area</li>
+            <li>git rm --cached -r . ///// git reset --mixed ///// git reset ///// limpia el stagging area remover todos los archivos del stagging area</li>
+
+            <li>git tag ///// ver los tags existentes</li>
+            <li>git tag -a v1.0 ( Opcional: Nombre del commit ) ///// -a para tag con informacion de quien lo crea, sin -a para no especificarlo, si no se agrega el parametro opcional se agrega el tag al ultimo commit</li>
+            <li>git checkout (nombreTag) ///// para cambiar al commit con ese tag</li>
+            <p class="nota">Nota: para enviar el tag al repositorio remoto, se usa --> git push origin ( Nombre del tag ) --> ejemplo: git push origin v1.0</p>
+
+            <li>git clean -n/-i/-f ///// Eliminar los archivos no staggeados que ademas no existen en la carpeta git ( Untracked files )</li>
+
+            <p class="nota">Nota: El flag -n sirve para ver "que pasaria" si se aplicara el commando</p>
+            <p class="nota">Nota2: El flag -i es el modo "interactivo", por medio de opciones de git te da opciones de filtros para aplicar, en este caso, opciones de que archivos borrar</p>
+      </ul>
+
+      <h2>Regresar a una versión previa</h2>
+      <div class="subtema">
+            <h4>Sin modificar el historial</h4>
+            <ul>
+                  <li>git revert (nombreCommit) ///// revierte los cambios que hizo el commit especificado, es decir, se crea un commit nuevo quitando los cambios del commit especificado </li>
+                  <li>git revert (nombreCommit) (nombreCommit) (nombreCommit)///// deshace varios commits, empezando por el ultimo publicado al mas viejo
+
+                  <li>git checkout (nombreCommit) ///// se regresa a una version anterior del programa y si entra en modo <strong>detached HEAD</strong>, es decir, si se hacen commits aqui, se deshecharan y no se agregaran a git, para trabajar desde
+                        aqui se debe crear una rama nueva desde el commit </li>
+
+                  <li>git reset --soft HEAD~(numeroCommitsParaBorrar) ///// Se regresa a una versión anterior del programa borrando el historial. <strong>No se borran archivos</strong></li>
+                  <li>git reset --soft (nombreCommit)) ///// Mueve el HEAD al commit especificado
+                  <li>git reset --mixed ///// limpia el stagging area </li>
+            </ul>
+            <h4>Modificando el historial</h4>
+            <ul>
+                  <li>git reset --hard HEAD~(numeroCommitsParaBorrar) ///// Se regresa a una versión anterior del programa borrando el historial y los commits </li>
+                  <li>git reset --hard (nombreCommit) ///// Se regresa al commit especificado y borra todos los commits y el historial que se hayan hecho despues del commit especificado </li>
+                  <li>git reset --hard ///// si se pone el comando sin especificar nada delante, se regresa al estado del ultimo commit (HEAD) y <strong>Se borran los cambios y archivos que no existan en el ultimo commit HEAD</strong></li>
+                  <p class="nota">Nota1: El HEAD es el ultimo commit realizado del branch</p>
+                  <p class="nota">Nota2: Tomando como referencia el HEAD se le resta un numero y esos commits se borraran ( incluyendo el HEAD )</p>
+                  <p class="nota">Despues de borrar commits y hacer un "git push" aparecera un error de que el repositorio local actual esta varios commits por detras del repositorio remoto, por lo que habria que hacer un "git push -f", con el flag
+                        -f
+                        para forzar cambios</p>
+                  <p class="nota">Nota4: Solo hacer reset hard para borrar commits en repositorios locales, en repositorios remotos es muy mal visto</p>
+            </ul>
+      </div>
+
+
+      <h2>Ramas</h2>
+      <ul>
+            <li>git status ///// checar en que rama estas</li>
+            <li>git branch ///// checar las ramas existentes ( marca en que rama estas con * )</li>
+            <li>git branch (nombreRama) ///// Crea otra rama</li>
+            <li>git branch (nombreRma) (nombreCommit) ///// crea una rama a partir del commit escogido</li>
+            <li>git branch -d (nombreRama) ///// borra la rama especificada</li>
+            <li>git checkout ( nombreRama ) ///// para cambiar entre ramas</li>
+            <li>git checkout -b ( NombreDeLaRamaNueva ) ///// crear la rama y ademas cambia a ella</li>
+            <li>git checkout -b ( NombreDeLaRamaNueva ) (NombreDeLaRamaPadre) ///// crear una rama a partir de otra rama y ademas cambia a ella</li>
+      </ul>
+
+
+      <div class="subtema">
+            <h4>Fusionar Ramas ( Toda la rama )</h4>
+            <ul>
+                  <li>git merge (NombreRama) ///// Se fusiona la rama en la que se esta actualmente con la rama especificada</li>
+                  <p class="nota">Nota: Si la rama en la que se esta (main) <strong>NO</strong> tiene commits extras en comparación de la rama especificada, se realiza por metodo "fast-forward", es decir directamente todos los commits de la rama
+                        especificada se mueven
+                        a la rama main</p>
+                  <p class="nota">Nota2: Si la rama en la que se esta (main) <strong>SI</strong> tiene commits extras en comparación de la rama especificada, se realiza por metodo "recursive", es decir el ultimo commit de la rama especificada se
+                        convierte
+                        en un nuevo
+                        commit de la rama main</p>
+                  <li>git rebase (NombreRama) ///// Se fusiona la rama en la que se esta actualmente con la rama especificada</li>
+                  <p class="nota">Nota: a diferencia de git merge, aqui se modifica el historial para que sea lineal, es decir, todo el historial del commit de la rama se fusiona con el del main.
+                        En git merge la fusion aparece como commit, aqui no.</p>
+
+                  <p class="nota">Nota general: se recomienda utilizar git rebase en el repositorio local y git merge en el repositorio remoto</p>
+            </ul>
+
+            <h4>Fusionar solo partes concretas de una rama ( Cherry picking )</h4>
+            <ul>
+                  <li>git cherry-pick (nombreCommit) ///// Agrega <strong>UN</strong> commit de otra rama a la rama actual</li>
+                  <li>git cherry-pick (nombreCommit) (nombreCommit2) (nombreCommit3).... ///// Agrega <strong>LOS</strong> commits <strong>especificados</strong> de otra rama a la rama actual</li>
+                  <li>git cherry-pick (nombreCommit)<strong>^..</strong>(nombreCommit8) ///// Agrega <strong>los commits especificados + los commits intermedios entre los dos</strong> </li>
+                  <li>git cherry-pick (nombreCommit)<strong>..</strong>(nombreCommit8) ///// <strong>NO</strong> Agrega los commits especificados, <strong> solo agrega los commits intermedios entre los dos</strong> </li>
+            </ul>
+      </div>
+
+      <h2>Obtener datos del servidor remoto</h2>
+      <ul>
+            <li>git fetch ///// <strong>Obtener solo el historial</strong> (metadatos) del repositorio remoto para saber si han habido cambios pero <strong>sin actualizar nada</strong> </li>
+            <li>git pulll ///// <strong>Actualizar </strong> el repositorio local con los cambios que tenga el repositorio remoto</li>
+      </ul>
+
+      <h2>Mostrar historial</h2>
+      <ul>
+            <li>git log ///// Mostrar el historial de <strong>rama actual</strong>, ademas <strong>muestra todas las lineas de mensaje del commit</strong> </li>
+            <li>git log --branches="*" ///// Mostrar el historial de <strong>todas las ramas</strong></li>
+            <li>git log --branches="(nombreRama)" ///// Mostrar el historial de la <strong>rama especificada</strong></li>
+            <li>git log --oneline ///// Mostrar el historial de forma mas corta, el numero del commit solo muestra los primeros digitos, <strong>muestra solo una linea de mensaje del commit</strong> </li>
+            <li>git log --pretty-format: (parametros) ///// Dar formato al historial, checar parametros en <a href="https://git-scm.com/docs/pretty-formats/2.39.0" target="_blank"> documentación oficial de git </a> </li>
+      </ul>
+
+      <h2>Guardar cambios a los que no se les ha hecho commit</h2>
+      <ul>
+            <li>git stash ///// Todos los cambios que se han realizado ( a los que no se les ha hecho commit ) se guardan ( Por default pone el nombre del commit en que se hace ) </li>
+            <li>git stash save "(NombreStash)" ///// para guardar el stash con determinado nombre</li>
+            <li>git stash apply ///// Se vuelve a tener los cambios que se han hecho previamente cuando se aplico git stash, manteniendo todos los commits nuevos que se hayan hecho, <strong>no borra el stash de la lista</strong></li>
+            <li>git stash apply --(numeroStash) ///// aplicar determinado stash de stash list, <strong>no borra el stash de la lista</strong> </li>
+            <li>git stash list ///// para ver todos los stash guardados</li>
+            <li>git stash clear ///// para borrar todos los stash guardados</li>
+            <li>git stash pop ///// aplica el ultimo stash de la stash list, <strong>borra ese stash de stash list</strong> </li>
+      </ul>
+
+      <h2>Errores</h2>
+      <ul>
+            <li>git bisect ///// para checar errores entre commits</li>
+            <li>git bisect start ///// para iniciar bisect</li>
+            <li>git bisect good ///// ultimo commit funcional</li>
+            <li>git bisect bad ///// commit donde dejan de funcionar cosas</li>
+      </ul>
+
+
+      <h2>Checar quien modifico/agrego lineas en un archivo</h2>
+      <li>git blame (nombreArchivo) ///// muestra el archivo y ademas se muestra quien ha creado/modificado cada linea y en que commit</li>
+
+      <h2>Modificar comportamiento git</h2>
+      <p>En .git/hooks/ se puede modificar el comportamiento de git al escribir los comandos normales </p>
+      <p>Por ejemplo: en .git/hooks/pre-commit.sample se modifica lo que se hace antes de relizar el commit</p>
+      <p>Para activar estos features se debe quitar el .sample del final del archivo</p>
+
+
+      <h2>.gitignore</h2>
+      <p>
+            Se ponen los nombres de los archivos que no quieres subir al repositorio local/remoto. <br>
+            Puedes usar # para poner comentarios. <br>
+            Ejemplo: <br>
+      <ul>
+            <li>*.txt ///// significa que todos los archivos con la extensión txt seran ignorados</li>
+            <li>credenciales.txt ///// se ignora ese archivo en especifico al hacer commit</li>
+      </ul>
+      </p>
+
+
+      <h1>Remoto</h1>
+
+      <ul>
+            <li>git remote add origin (urlRepositorioRemoto) ///// Agrega un repositorio remoto </li>
+            <li>git remote add (nombrePlataformaGit) (urlRepositorioRemoto) ///// Agrega un repositorio remoto extra </li>
+            <li>git push ///// mandar los commits locales al repositorio remoto <strong>( al origin especificado en .git/config )</strong> </li>
+            <li>git push (nombrePlataformaGit) ///// mandar los commits locales al repositorio remoto especificado </li>
+
+            <p class="nota">
+                  Nota: (nombrePlataformaGit) se encuentra en .git/config, el cual previamente se agrego con el comando git remote add (nombrePlataformaGit) (urlRepositorioRemoto)
+            </p>
+            <li>git push origin (nombreRama) ///// crear rama en el repositorio remoto, ademas de enviar su contenido</li>
+      </ul>
+
+      <p class="nota">Nota: el flag -u es para establecer un repositorio principal, al usar git push -u origin main, el repositorio de github se convierte en el principal, por lo que git push funciona sin especificar a que repositorio va a ir.
+            Esto solo se hace la primera vez al crear la rama main</p>
+      <p class="nota">Nota2: origin hace referencia a la url en el apartado "origin" de .git/config </p>
+
+      <h2>Conflictos</h2>
+      <p>Cuando 2 o mas usuarios modifican la misma misma linea de codigo se ocasionan los conflictos, esto puede suceder en:</p>
+      <ul>
+            <li>Un user1 hace push al repositorio remoto, posteriormente un user2 intenta un push al repositorio remoto habiendo modificado la misma linea de codigo</li>
+            <li>Un user hace git pull para obtener los datos y obtiene un warning de que una/varias lineas en su repo local actual tienen conflicto</li>
+      </ul>
+      <p>
+            Estos mensajes de warning aparecen cuando se hace un push o un pull request, podemos saber cual es el fichero que ocasiona el problema con <strong>git status</strong>.<br>
+            Para solucionarlo debemos modificar el archivo en cuestión y gracias a git nos apareceran <strong>(nombreCommit-user1)>>>>>></strong> y <strong>(nombreCommit2-user2)=======</strong> dentro del archivo con conflicto, aqui se debe elegir
+            uno de los dos cambios, posteriormente hacer commit y push
+      </p>
+
+
+      <h1>Gitflow</h1>
+
+      <img src="images/gitFlow.png" alt="">
+
+      <p>Esta forma de trabajo es comun y se puede implementar con los comandos de git flow o de la forma tradicional con los comandos convencionales git</p>
+
+      <p>Para iniciar a utilizarlo:</p>
+
+      <ul>
+        <li>git flow init</li>
+        <li>git flow feature start (nombreFeature) --- crear y empezar a trabajar en la rama feature</li>
+        <li>git flow feature finish (nombreFeature) --- terminar esa rama de feature --- Hace merge a la rama develop</li>
+        <li>git flow release start (numeroVersion -- 0.1/1.0/etc) --- crear y empezar a trabajar en la rama release</li>
+        <li>git flow release finish (numeroVersion -- 0.1/1.0/etc) --- terminar esa rama de release --- Hace merge a la rama main y en caso de haber bugfixes tambien a la rama develop</li>
+        <li>git flow hotfix start (hotfix_numero) --- crear y empezar a trabajar en la rama feature</li>
+        <li>git flow hotfix finish (hotfix_numero) --- terminar esa rama de hotfix --- Hace merge a la rama main y develop</li>
+      </ul>
+
+      <p class="nota" >Al igual que las ramas normales, al implementar nuevos archivos o commits se usar git add y git commit</p>
+
+</body>
+
+</html>

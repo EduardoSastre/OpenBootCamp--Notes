@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+      <meta charset="utf-8">
+      <title>Notas Java</title>
+</head>
+
+<body>
+      <h1>Datos</h1>
+      <p>
+            Si el tipo de dato empieza por miniscula significa que es primitivo ( No es un objeto y no tiene metodos ), ademas no pueden ser null.
+            Si el tipo de dato empieza por mayuscula significa que es no primitivo ( Es un objeto con metodos ), ademas pueden ser null. ( Util para bases de datos )
+
+            Los datos primitivos pueden transformase a no primitivos por medio de los Wrapper.
+      </p>
+
+      <img src="images/tiposDatos.png" alt="">
+
+      <h1>Modificador Static</h1>
+      <p>
+            Se crea dentro de una clase ( como todo en java ), sin embargo este modificar indica que ese metodo con la palabra Static puede invocarse sin necesidad de crearse un nuevo objeto de la clase.
+      </p>
+
+      <h1>Modificador de visibilidad: protected</h1>
+      <p>
+            Ese metodo/atributo solo es visible para la misma clase, clases hijas y todas las clases del mismo paquete.
+      </p>
+
+      <h1>Modificar bucles - BREAK Y CONTINUE</h1>
+      <p>
+            En java hay dos sentencias que nos permiten forzar la salida de un bucle, y estas sentencias son break (para salir completamente del bucle) y continue (para salir de la iteración actual y saltar directamente a la siguiente). <br>
+
+            Estas instrucciones siempre irán dentro de algún if (o else) porque carece de sentido si se va a ejecutar siempre pues en ese caso está claro que hay algo que estamos haciendo mal porque una parte de nuestro código no llegará a ejecutarse
+            nunca.
+      </p>
+
+      <h1>Metodo Super ( Herencia )</h1>
+      <p>
+        Se usa en una clase hija para llamar el constructor/metodo de su clase padre.
+      </p>
+
+      <h1>Polimorfismo</h1>
+      <img src="images/polimorfismo.png" alt="">
+      <p>
+        Hacer que una clase base se comporte como alguna clase hija.
+      </p>
+      <img src="images/polimorfismo2.png" alt="">
+      <p>
+        La palabra reservada <strong>instanceof</strong> checa si un objeto es una instancia de una clase, en el ejemplo de la imagen, se creo un objeto Coche instanciado con la clase cocheElectrico, por lo que este objeto es una instancia de Coche y CocheElectrico
+      </p>
+</body>
+
+</html>

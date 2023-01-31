@@ -71,9 +71,9 @@
       <h1>Try Catch Finally</h1>
       <img src="images/tryCatchFinally.png" alt="">
       <p>
-        Try para "intentar" un codigo, en caso de que haya algun fallo se aplica Catch.
-        Esto evita que el programa finalize de repente en caso de algun error.
-        Finally es un codigo que sin importar falle o no el try, se va a ejecutar ( podria usarse para cerrar conexiones a bases de datos, etc )
+            Try para "intentar" un codigo, en caso de que haya algun fallo se aplica Catch.
+            Esto evita que el programa finalize de repente en caso de algun error.
+            Finally es un codigo que sin importar falle o no el try, se va a ejecutar ( podria usarse para cerrar conexiones a bases de datos, etc )
       </p>
 
       <h1>cin y cout de java ( scanner )</h1>
@@ -82,13 +82,97 @@
       <h1>Java Docs</h1>
       <img src="images/javaDoc.png" alt="">
       <p>
-        Para generar documentación. Se agrega arriba de cada clase y metodo.
+            Para generar documentación. Se agrega arriba de cada clase y metodo.
       </p>
 
       <h1>Funciones anonimas</h1>
       <p>
-        () -> system.out.println("");
+            () -> system.out.println("");
       </p>
-</body>
+
+
+      <h1>Refactoring</h1>
+      <p>
+            En el caso de funciones, que sean funciones puras.
+      </p>
+      <h2>Consolidate conditional</h2>
+      <img src="images/CompresionIfs.png" alt="">
+
+      <h1>Tecnicas de Refactoring</h1>
+      <a href="https://refactoring.guru/refactoring/catalog" target="_blank"> Refactoring </a>
+
+      <h1>Operador ternario</h1>
+      <img src="images/operadorTernario.png" alt="">
+
+      <h1>Constantes</h1>
+      <p>
+            Convención: En mayusculas separadas por barras bajas ( PRECIO_MINIMO_COMPRA )
+      </p>
+
+      <h1> Arrays vs Vectores </h1>
+      <p>
+            Los Arrays tienen un tamaño definido que no puede cambiarse. Por el contrario los vectores tienen tamaño variable, pueden verse como arrays de tamaño variable.
+      </p>
+      <ul>
+            <li>Vector<Integer> vector = new Vector();</li>
+            <li>type[] arrayName = new type[] &nbsp&nbsp&nbsp or &nbsp&nbsp&nbsp type array [] = new type[ maximumQuantity ];</li>
+      </ul>
+
+      <p>
+            Para agregar datos en Array:
+            Array [ index ] = value;
+
+            Para agregar datos en un vector:
+            vector.add( value );
+
+            Otros metodos de vector:
+            remove()
+            size()
+            capacity()
+
+            Los vectores por debajo crean un array con determinada capacidad ( capacity() ), cada vez que se supera esa capacidad se copian los datos del array y se transfieren
+            a otro array nuevo. Esto es una operación muy costosa, por lo que se debe evitar el resize de un vector.
+
+            Vector<Integer> vector = new Vector( initialCapacity, capacityIncrement );
+
+                  Por default los vectores tienen capacidad de 10 y se va duplicando, esta capacidad inicial se puede manipular con initialCapacity y
+                  cuanto se incrementa con capacityIncrement
+
+                  Para recorrer un vector: <br>
+                  <img src="images/recorrerVector.png" alt="">
+
+                  Para que la capacidad ( capacity() ) sea igual a su tamaño se usa su metodo: trimToSize().
+
+                  Crecer y decrecer es una operación costosa.
+
+      </p>
+
+      <h1>Vectores vs ArrayList</h1>
+      <img src="images/arrayList.png" alt="">
+      <p>
+            Las arrayList basicamente son iguales a los vectores. Su mayor diferencia radica en cuando aumenta su capacidad al llenarse su array interno.
+            Ademas las Array list no tienen el metodo capacity() y estas implementan la interface List.
+
+            Los arrayList no son THREAD SAFE, es decir en multihilos no funcionan correctamente, pero los vectores si.
+
+            En secuencia arrayList y para multihilos Vectores.
+            Ambos tienen mismos metodos porque heredan del mismo objeto
+      </p>
+
+      <h4>Convertir lista en array</h4>
+      <img src="images/convertirListaEnArray.png" alt="">
+
+      <h1>ArrayList vs LinkedList</h1>
+      <img src="images/linkedList.png" alt="">
+      <p>
+          Las linkedList funcionan igual que las arraylist.
+          La diferencia es que las arrayList por debajo tienen un array y las linkedList tienen una lista doblemente enlazada.
+          ArrayList es mas rapida para buscar datos.
+          LinkedList es mas rapida modificando datos.
+          Array implementa List y linkedList implementa list y deque
+      </p>
+
+      <h4>Crear una linkedList a partir de un ArrayList</h4>
+      <img src="images/crearLinkedListConUnaArrayList.png" alt="">
 
 </html>

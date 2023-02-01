@@ -70,11 +70,25 @@
 
       <h1>Try Catch Finally</h1>
       <img src="images/tryCatchFinally.png" alt="">
+      <img src="images/tryCatchFinally2.png" alt="">
       <p>
             Try para "intentar" un codigo, en caso de que haya algun fallo se aplica Catch.
             Esto evita que el programa finalize de repente en caso de algun error.
             Finally es un codigo que sin importar falle o no el try, se va a ejecutar ( podria usarse para cerrar conexiones a bases de datos, etc )
+
+            Exception es una clase.
       </p>
+
+      <h1>Throw / Throws</h1>
+      <p>
+        Los errores de codigo son excepciones <br>
+        Throw es para especificar que un codigo puede tener excepciones <br>
+        Throws para especificar que una funcion/clase puede generar excepciones. <br>
+
+        Si una funcion tiene "throws", significa que puede generar excepciones pero que no se hara cargo de ellas, lo que la este invocando tiene que manejarla con try catch
+      </p>
+      <img src="images/throw1.png" alt="">
+      <img src="images/throw2.png" alt="">
 
       <h1>cin y cout de java ( scanner )</h1>
       <img src="images/cin-cout(Scanner).png" alt="">
@@ -188,7 +202,7 @@
       <p>
         Deben tener clave unica.
         Para obtener un valor de una clave especifica: <br>
-        <img src="images/mapGetValue.png" alt="">
+        <img src="images/mapGetValue.png" alt=""> <br>
 
         Con el metodo put(clave) se reemplaza el valor de una clave existente y en caso de no existir la crea.
         Con el metodo replace(clave) se reemplaza el valor de una clave existente y en caso de no existir no hace nada.

@@ -247,5 +247,30 @@
 
       <h1>Forma funcional ( Declarativa ) VS Forma imperativa</h1>
       <img src="images/declarativaVSfuncional.png">
+
+      <h1>Recursividad</h1>
+      <p>
+            Una función que se llama a si misma. Se utiliza para mejorar la legibilidad del codigo y en algunos casos el rendimiento.
+            Se recomienda para recorrer arboles. Una desventaja es que consume muchos recursos ( Crea muchas copias en memoria ). Hay dos tipos de recursividad:
+      </p>
+      <ul>
+            <li>Recursividad de cola (Tail recursion): Lo <strong>ultimo</strong>  que se hace es invocar a la función</li>
+            <li>Recursividad de cabeza ( Head recursion ): Lo <strong>primero</strong> que se hace es invocar a la función<</li>
+      </ul>
+      <img src="images/tailHeadRecursion.png">
+      <ul>
+            <li>TailRecursion: imprime el numero cuando se apilan las llamadas ( se imprime el numero cada vez que la funcion se llama a si misma )</li>
+            <li>HeadRecursion: imprime el numero cuando se resuelven las llamadas ( Se imprime solo hasta que se han apilado todas las llamadas )</li>
+      </ul>
+      <p>Resultado de las funciones anteriores:</p>
+      <img src="images/tailHeadRecursion_result.png">
+
+      <h1>Rendimiento</h1>
+      <a href="https://pablocianes.com/notacion-big-o/" target="_blank" >Para conocer el rendimiento de un algoritmo se utiliza la notación BIG o</a>
+
+      <h1>Checar tiempo de ejecución</h1>
+      <img src="images/checarTiempoEjecución.png" alt="">
+
+
 </body>
 </html>

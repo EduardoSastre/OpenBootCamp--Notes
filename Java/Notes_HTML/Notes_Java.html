@@ -271,6 +271,44 @@
       <h1>Checar tiempo de ejecución</h1>
       <img src="images/checarTiempoEjecución.png" alt="">
 
+      <h1>Patrones de diseño</h1>
+      <h2>Patrones creacionales</h2>
+      <p>Para crear objetos e instancias de formas mas simples</p>
+      <h3>Singleton</h3>
+      <p>Solo puede haber una instancia de una clase</p>
+      <p>
+            El punto de singleton solo tener un objeto de una clase. Para ello se bloquea el uso del constructor fuera de la clase y desde un metodo
+            de la clase siempre se regresa la misma instancia.
+            ( de esta forma siempre se usa el mismo objeto ). Algunos usos:
+      </p>
+
+      <ul>
+            <li>Compartir conexiones a una base de datos</li>
+            <li>Compartir uso de  un mismo fichero</li>
+            <li>Evitar la instanciación de una aplicación multiples veces</li>
+      </ul>
+      <p>Antes de singleton:</p>
+      <img src="images/BeforeSingletonMemory.png">
+      <p>Despues de singleton:</p>
+      <img src="images/PostSingletonMemory.png">
+
+      <h3>Factory</h3>
+      <p>Para crear una jerarquia de clases. A traves de una clase se implementan varias dentro para evitar complejidad de codigo.</p>
+
+      <h3>Builder</h3>
+      <p>Para instanciar clases complejas por partes</p>
+      <img src="images/PatronBuilder.png">
+
+      <h3>Prototype</h3>
+      <p>Para generar una copia de un objeto ya existente ( clonar un objeto ).</p>
+
+      <h2>Patrones estructurales</h2>
+      <h3>Patron decorador</h3>
+      <p>Añadir funcionalidad a una clase existente sin modificar la clase.</p>
+
+      <h3>Patron adaptador</h3>
+      <p>Clase intermedia para que dos clases que no tienen nada ver puedan trabajar mutuamente</p>
+      <p>Se usa mucho para codigo legacy, cosas viejas se le agregan cosas nuevas. Se usa tambien cuando se desconoce/no se puede modificar el codigo fuente</p>
 
 </body>
 </html>

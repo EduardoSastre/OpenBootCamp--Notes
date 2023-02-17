@@ -9,21 +9,23 @@ public class Application {
       private Application(){}
 
       public static Application getInstance() {
+
             if ( app == null ) {
                   app = new Application();
             }
 
             return app;
+
       }
 
       public void run(){
+
             if (!isRunning){
                   isRunning = true;
                   System.out.println("Starts running...");
             } else {
                   System.out.println( "Already running..." );
             }
-
 
       }
 

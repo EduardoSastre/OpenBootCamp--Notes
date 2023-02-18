@@ -402,5 +402,30 @@
       <a href="http://commons.apache.org/cli/" target="_blank" >Apache Commons CLI</a> <br >
       <a href="http://www.martiansoftware.com/jsap/" target="_blank" >JSAP</a>
 
+      <h3> Clean architeture </h3>
+      <ol >
+            <li>Capa de entidades ( Logica de negocio: comunicacion entre servicios, modelos de datos, gestion de caches )</li >
+            <li>Capa de casos de uso ( logica de la aplicacion )</li>
+            <li>Controladores ( Interfaces adaptadoras -- no se refiere a interfaces de java -- funciones que implementan los casos de uso ) </li>
+            <li>Todo lo demas ( Frameworks y controladores -- no se refiere a controladores de mvc -- Renderizar paginas/ conexion base de datos/ pediticines html a otros sitios, etc )</li>
+      </ol >
+      <p>La capa 1 solo puede comunicarse con la capa 2, la 2 con 1 y 3, 3 con 2 y 4, 4 con 3</p>
+
+      <p>Orden de sucesos</p>
+      <ol>
+            <li>Petición: Entra un endpoint por http/ comando de cmd/ valores de una ventana ( escritorio )</li>
+            <li>Procesar peticion: Se entra al core ( capa de entidades y casos de uso )</li>
+            <li>Solicitar informacion a otra capa: Proveedores de datos - bases de datos, ficheros, etc</li>
+      </ol>
+
+      <h4>Principios SOLID</h4>
+      <ul>
+            <li>S: Single Responsibility Principle -- Un objeto/servicio solo se ocupa de una unica cosa</li>
+            <li>O: O – Open/Closed Principle -- una entidad esta abierta a extenderse (heredarse) y no se debo modificar nada del codigo principal ( main )</li>
+            <li>L: Liskov Substitution Principle -- Una clase hija puede sustituirse por la clase padre </li>
+            <li>I: Interface Segregation Principle -- Una clase no implementara una interfaz que no necesita ( la clase perro no va a implementar la interfaz Pajaro )</li>
+            <li>D: Dependency Inversion Principle -- Las dependencias se deben abstraer -- Un paquete de alto nivel no depende de un modulo de bajo nivel ( Utiizar metodos abstractos de forma generica )</li>
+            <p>Ejemplo: Se tiene una clase MySql, se quiere hacer otra clase PostgreSql, esta nueva clase debe implementar los mismos metodos que tiene la clase Mysql para no alterar el codigo principal ( Solo se alteraria 1 linea, la que instancia la clase: new PostgreSql en lugar de new MySql )</p>
+      </ul>
 </body>
 </html>

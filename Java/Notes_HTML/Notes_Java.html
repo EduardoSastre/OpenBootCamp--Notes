@@ -420,12 +420,49 @@
 
       <h4>Principios SOLID</h4>
       <ul>
-            <li>S: Single Responsibility Principle -- Un objeto/servicio solo se ocupa de una unica cosa</li>
-            <li>O: O – Open/Closed Principle -- una entidad esta abierta a extenderse (heredarse) y no se debo modificar nada del codigo principal ( main )</li>
-            <li>L: Liskov Substitution Principle -- Una clase hija puede sustituirse por la clase padre </li>
-            <li>I: Interface Segregation Principle -- Una clase no implementara una interfaz que no necesita ( la clase perro no va a implementar la interfaz Pajaro )</li>
-            <li>D: Dependency Inversion Principle -- Las dependencias se deben abstraer -- Un paquete de alto nivel no depende de un modulo de bajo nivel ( Utiizar metodos abstractos de forma generica )</li>
+            <li>S: Single Responsibility Principle -- Una clase solo se ocupa de una tarea a la vez</li>
+            <li>O: O – Open/Closed Principle -- Una vez creada una clase, en caso de agregar funcionalidad se creara una clase que extienda a la original para agregar esa funcionalidad extra, nunca se modificara la clase original</li>
+            <li>L: Liskov Substitution Principle -- Una clase hija puede sustituirse por la clase padre y el codigo seguira funcionando ( Todas las clases hijas deberian tener los mismos metodos del padre, sin metodos extra ) </li>
+            <li>I: Interface Segregation Principle -- Que una clase no implemente metodos sin sentido de la interfaz o interfaces que no le corresponden, ademas de interfaces no muy largas ( Una clase puede implementar multiples interfaces )</li>
+
+            <p>Ejemplo I de solid:</p>
+            <img src = "images/checarPadre.png" alt = "Checar si una instancia es hija de una clase/interfaz" >
+            <p>
+                  Los metodos marcados en el rectangulo rojo son funciones que solo estan presentes en la interfaz UsuariosDBEstadisticas,
+                  por lo que antes hay que verificar que el objeto que entra a la funcion si implemente esa interfaz
+            </p>
+
+            <br >
+
+            <li>D: Dependency Inversion Principle -- Por medio de una interfaz se obliga a que ciertas clases implemente ciertos metodos, luego se invocan esos metodos en un wrapper y sin importar lo que la clase haga por abajo, la forma de invocacion siempre es la misma.</li>
             <p>Ejemplo: Se tiene una clase MySql, se quiere hacer otra clase PostgreSql, esta nueva clase debe implementar los mismos metodos que tiene la clase Mysql para no alterar el codigo principal ( Solo se alteraria 1 linea, la que instancia la clase: new PostgreSql en lugar de new MySql )</p>
+            <p>Ejemplo 2:</p>
+            <img src = "images/Dsolid.png" alt = "D de SOLID" >
+
+            <h4>Organización por carpetas</h4>
+
+            <ol>
+                  <li>Entities: Los POJOS ( Objetos modeloados -- usuarios, animeales, etc )</li>
+                  <img src = "images/Entities.png" alt = "Entities" >
+                  <li>Datasources/repositories: los que maneja a las entities ( manejo de información ) </li>
+                  <img src = "images/repositories.png" alt = "Repositories" >
+
+                  <p>Nota: Las entidades ( entities ) no se comunican con los que manejan datos ( Datasources/repositories )</p>
+                  
+                  <li>Service: Los que se encargan de la comunicación entre Entities y Datasources</li>
+                  <img src = "images/services.png" alt = "Services" >
+
+                  <li>Controllers: Cualquier request HTTP entra aqui</li>
+                  <img src = "images/controller.png" alt = "Controller" >
+                  <p>Nota: los controladores sueneten tener el nombre (nombre)Controller</p>
+                  <br >
+                  <li>Config: Redirecciona las peticiones http a Controllers</li>
+                  <img src = "images/configWithJersey.png" alt = "configJersey" >
+
+            </ol>
       </ul>
+
+
+
 </body>
 </html>

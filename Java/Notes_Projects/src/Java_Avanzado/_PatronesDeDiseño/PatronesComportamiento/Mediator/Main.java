@@ -13,7 +13,7 @@ public class Main {
             mediator.registra( colega3 );
 
             colega1.envia();
-            colega2.envia();
-            colega3.envia();
+            //colega2.envia();
+            //colega3.envia();
       }
 }

@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="calculatorService" class="org.example.calculatorService">
-        <!-- collaborators and configuration for this bean go here -->
+    <context:component-scan base-package="org.example"/> <!-- To auto scan beans with notation @Component(into classes) in the package "org.Example" -->
+
+
+    <!-- The code below is when no using component scan ( the line above ), in this case the beans are added manually -->
+    <!--
+    <bean id="CalculatorService" class="org.example.CalculatorService">
+
     </bean>
+    -->
 
+    <!-- scope singleton for always has 1 object, scope protoype to create multiple objetcs -->
 
-    <!-- more bean definitions go here -->
+    <!--
+    <bean id="AnotherClass" class="org.example.AnotherClass" scope="prototype" >
+        <constructor-arg name = "calculator"  ref="CalculatorService"/> The ref is the id from the bean CalculatorService
+        <constructor-arg name = "name"  value="Calculator 3000"/> attribute name from class "AnotherClas" and his value
+    </bean>
+    -->
 
 </beans>

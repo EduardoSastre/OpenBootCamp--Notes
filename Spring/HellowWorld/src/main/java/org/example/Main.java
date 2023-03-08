@@ -10,7 +10,7 @@ public class Main {
                 ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml"); //Spring container
 //
                 //With this we obtain the class calculator service that was previously registered in beans.xml
-//                CalculatorService calculator = (CalculatorService) context.getBean( "CalculatorService" );
+                CalculatorService calculator = (CalculatorService) context.getBean( "calculatorService" );
 //                CalculatorService calculator2 = (CalculatorService) context.getBean( "CalculatorService" );
 
                 //System.out.println( calculator.holaMundo() );
@@ -23,7 +23,7 @@ public class Main {
                 //CalculatorService calculator = (CalculatorService) context.getBean( "CalculatorService" );
                 //calculator.message = "Mensaje cambiado";
 
-                AnotherClass anotherClass = (AnotherClass) context.getBean( "AnotherClass");
+                AnotherClass anotherClass = (AnotherClass) context.getBean( "anotherClass");
                 System.out.println( anotherClass.calculator.defaultMessage() );
 
         //Concept 3 -- Scope

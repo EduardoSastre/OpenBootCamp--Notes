@@ -1,5 +1,8 @@
 package com.example.restAndJPA;
 
+import com.example.restAndJPA.controllers.BookController;
+import com.example.restAndJPA.entities.Book;
+import com.example.restAndJPA.repositories.BookRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,6 +19,7 @@ public class RestAndJpaApplication {
 		BookRepository repository = ( BookRepository ) context.getBean("bookRepository");
 
 		//For learning purposes this is in main but the correct position of a CRUD is in a class Service/Controller
+		//BookController bookController = ( BookController ) context.getBean("bookController");
 
 		//Create book
 		Book book = new Book( null, "Can I say", "Travis Barker", 300, 600.00, LocalDate.of(2017, 02, 22), true );
@@ -36,13 +40,14 @@ public class RestAndJpaApplication {
 		System.out.println( "(Update) All updated books are: " + repository.findAll() );
 
 		//Delete book
+		/*
 		Book searchedBook2 = new Book();
 		searchedBook2.setTitle("Can I say: The revenge!");
 		Example<Book> bookExample2 = Example.of( searchedBook2 );
 		Optional<Book> bookDB2 = repository.findOne( bookExample2 );
 		Book bookFind2 = bookDB2.get();
 		repository.deleteById( bookFind2.getId() );
-		System.out.println( "(Delete) All books are: " + repository.findAll() );
+		System.out.println( "(Delete) All books are: " + repository.findAll() );*/
 	}
 
 }

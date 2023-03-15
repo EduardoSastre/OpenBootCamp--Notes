@@ -1,10 +1,10 @@
-package com.example.restAndJPA;
+package com.example.restAndJPA.entities;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-@Entity
+@Entity //This class is a table from a database SQL
 @Table( name = "Books" ) //This is to change the table name in the database
 public class Book {
 

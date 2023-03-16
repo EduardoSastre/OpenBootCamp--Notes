@@ -2,6 +2,9 @@ package com.example.restAndJPA.controllers;
 
 import com.example.restAndJPA.entities.Book;
 import com.example.restAndJPA.repositories.BookRepository;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -30,8 +33,10 @@ public class BookController {
     }
 
     //Find a book
+
     @GetMapping("/api/books/{id}") //{id} is a parameter ( variable )
-    public ResponseEntity<Book> findById(@PathVariable Long id ){ //@PathVariable vinculates {id} from line above with Long id
+    @Operation(description = "Get a book")
+    public ResponseEntity<Book> findById(@Parameter(ref = "Primary Key type Long") @PathVariable Long id ){ //@PathVariable vinculates {id} from line above with Long id
         //ResponseEntity<Object> is a http response
         Optional<Book> bookFinded = repository.findById(id);
 
@@ -77,7 +82,9 @@ public class BookController {
 
     }
 
+
     @DeleteMapping("/api/books/{id}")
+    @Hidden //No show this in documentation
     public ResponseEntity<Book> delete( @PathVariable Long id ){
         if ( !repository.existsById(id) ) {
             log.warn("Trying to delete a non exist book");
@@ -89,6 +96,7 @@ public class BookController {
         repository.deleteById(id);
         return ResponseEntity.noContent().build(); //This sends response 200
     }
+
 
     @DeleteMapping("api/books")
     public ResponseEntity<Book> deleteAll(){

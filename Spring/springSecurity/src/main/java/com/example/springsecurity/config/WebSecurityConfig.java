@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -26,6 +28,7 @@ public class WebSecurityConfig {
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
             http.authorizeRequests()
                     .requestMatchers("/hola").permitAll()
+                    .requestMatchers("/notes").hasRole("ADMIN")
                     .anyRequest().authenticated()
                     .and()
                     // Possibly more configuration ...
@@ -38,24 +41,28 @@ public class WebSecurityConfig {
 
 
 
-        /*
+        //This users are in ram
         @Bean
         public UserDetailsService userDetailsService() {
-            UserDetails user = User.withDefaultPasswordEncoder()
+            UserDetails user = User.builder()
                     .username("user")
-                    .password("password")
+                    .password(  passwordEncoder().encode("password")  )
                     .roles("USER")
                     .build();
-            UserDetails admin = User.withDefaultPasswordEncoder()
+            UserDetails admin = User.builder()
                     .username("admin")
-                    .password("password")
+                    .password(  passwordEncoder().encode("password")  )
                     .roles("ADMIN", "USER")
                     .build();
             return new InMemoryUserDetailsManager(user, admin);
         }
 
+        @Bean
+        public PasswordEncoder passwordEncoder() {
+            return new BCryptPasswordEncoder();
+        }
 
-         */
+
         // Possibly more bean methods ...
 
 }

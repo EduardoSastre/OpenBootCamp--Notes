@@ -31,15 +31,9 @@ public class WebSecurityConfig {
                     .requestMatchers("/notes").hasRole("ADMIN")
                     .anyRequest().authenticated()
                     .and()
-                    // Possibly more configuration ...
-                    .formLogin() // enable form based log in
-                    // set permitAll for all URLs associated with Form Login
-                    .permitAll();
+                    .oauth2Login();
             return http.build();
         }
-
-
-
 
         //This users are in ram
         @Bean
